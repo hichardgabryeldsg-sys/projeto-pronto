@@ -1,0 +1,270 @@
+/* Página inteira */
+.login-page {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #ce9193;
+
+  padding: 30px;
+
+  box-sizing: border-box;
+}
+
+/* Cartão do Login */
+.login-card {
+  width: 100%;
+  max-width: 335px;
+  min-height: 700px;
+
+  background-color: white;
+
+  padding: 25px;
+
+  box-sizing: border-box;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 24vw;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+
+
+.logo-icon {
+  font-size: 28px;
+}
+
+/* Imagem dos animais */
+.pets-image {
+  width: 190px;
+  height: 160px;
+
+  object-fit: contain;
+
+  display: block;
+
+  margin: 5px auto 0;
+}
+
+/* Título */
+h1 {
+  font-size: 36px;
+
+  margin-top: 5px;
+  margin-bottom: 60px;
+
+  color: #000;
+}
+
+/* Campos */
+.input-group {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: 40px;
+
+  border-bottom: 1px solid #555;
+
+  margin-bottom: 35px;
+}
+
+.input-icon {
+  width: 30px;
+
+  font-size: 20px;
+
+  color: #000;
+}
+
+.input-group input {
+  flex: 1;
+
+  min-width: 0;
+
+  border: none;
+  outline: none;
+
+  font-size: 18px;
+
+  color: #555;
+
+  background: transparent;
+}
+
+.input-group input::placeholder {
+  color: #888;
+}
+
+/* Esqueci senha */
+.forgot-password {
+  display: block;
+
+  margin-top: -10px;
+
+  color: #9181ed;
+
+  font-size: 12px;
+
+  font-weight: bold;
+
+  text-decoration: none;
+}
+
+/* Botão */
+button {
+  display: block;
+
+  width: 148px;
+  height: 44px;
+
+  margin: 100px auto 0;
+
+  border: none;
+
+  border-radius: 15px;
+
+  background-color: #ff893d;
+
+  color: #000;
+
+  font-size: 13px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+
+/* ================================= */
+/*           RESPONSIVIDADE          */
+/* ================================= */
+
+/* Tablets */
+@media (max-width: 768px) {
+
+  .login-page {
+    padding: 20px;
+  }
+
+  .login-card {
+    max-width: 335px;
+    min-height: 680px;
+  }
+
+}
+
+
+/* Celulares */
+@media (max-width: 480px) {
+
+  .login-page {
+    min-height: 100vh;
+
+    padding: 15px;
+  }
+
+  .login-card {
+    width: 100%;
+
+    min-height: 650px;
+
+    padding: 22px;
+  }
+
+  .logo {
+    font-size: 13px;
+  }
+
+  .logo-icon {
+    font-size: 25px;
+  }
+
+  .pets-image {
+    width: 175px;
+    height: 145px;
+  }
+
+  h1 {
+    font-size: 32px;
+
+    margin-top: 5px;
+    margin-bottom: 50px;
+  }
+
+  .input-group {
+    margin-bottom: 30px;
+  }
+
+  .input-group input {
+    font-size: 16px;
+  }
+
+  button {
+    margin-top: 85px;
+  }
+}
+
+
+/* Celulares pequenos */
+@media (max-width: 360px) {
+
+  .login-page {
+    padding: 10px;
+  }
+
+  .login-card {
+    min-height: 620px;
+
+    padding: 18px;
+  }
+
+  .pets-image {
+    width: 155px;
+    height: 130px;
+  }
+
+  h1 {
+    font-size: 30px;
+
+    margin-bottom: 40px;
+  }
+
+  .input-group input {
+    font-size: 15px;
+  }
+
+  button {
+    width: 140px;
+    margin-top: 70px;
+  }
+}
+
+#img-icon {
+  height: 26px;
+  width: 55px;
+}
+
+.foto-bttn {
+  margin-top: 107px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+
+}
+
+.user {
+  margin-top: 260px;
+}

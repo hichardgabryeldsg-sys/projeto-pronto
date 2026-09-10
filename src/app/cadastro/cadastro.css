@@ -1,0 +1,272 @@
+/* ================================= */
+/*          PÁGINA DE CADASTRO       */
+/* ================================= */
+
+.cadastro-page {
+    width: 100%;
+    min-height: 100vh;
+    background-color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* ================================= */
+/*               LOGO                */
+/* ================================= */
+
+.logo {
+    position: absolute;
+    top: 28px;
+    left: 40px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#img-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+#name-logo {
+    color: #000;
+}
+
+
+/* ================================= */
+/*             CADASTRO              */
+/* ================================= */
+
+.cadastro {
+    position: absolute;
+
+    left: 28px;
+    top: 270px;
+
+    width: 390px;
+}
+
+.cadastro h1 {
+    font-size: 36px;
+    margin: 0 0 55px 0;
+    color: #000;
+}
+
+
+/* ================================= */
+/*              CAMPOS               */
+/* ================================= */
+
+.input-group {
+    display: flex;
+    align-items: center;
+
+    width: 247px;
+    height: 40px;
+
+    border-bottom: 1px solid #999;
+
+    margin-bottom: 25px;
+}
+
+.input-icon {
+    width: 28px;
+
+    font-size: 17px;
+
+    color: #000;
+}
+
+.input-group input {
+    flex: 1;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    font-size: 16px;
+
+    color: #555;
+}
+
+.input-group input::placeholder {
+    color: #888;
+}
+
+
+/* ================================= */
+/*        IMAGEM DOS ANIMAIS         */
+/* ================================= */
+
+.foto-bttn {
+    position: absolute;
+
+    top: 90px;
+    right: 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.foto-bttn img {
+    width: 630px;
+    height: 540px;
+
+    object-fit: contain;
+}
+
+
+/* ================================= */
+/*              BOTÃO                */
+/* ================================= */
+
+.foto-bttn button {
+    width: 128px;
+    height: 39px;
+
+    margin-top: 40px;
+
+    border: none;
+    border-radius: 14px;
+
+    background-color: #ff893d;
+
+    color: #000;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.foto-bttn button:hover {
+    opacity: 0.9;
+}
+
+
+/* ================================= */
+/*             TABLET                */
+/* ================================= */
+
+@media (max-width: 900px) {
+
+    .cadastro {
+        left: 30px;
+        top: 250px;
+    }
+
+    .foto-bttn {
+        right: -100px;
+    }
+
+    .foto-bttn img {
+        width: 520px;
+        height: 450px;
+    }
+}
+
+
+/* ================================= */
+/*             CELULAR               */
+/* ================================= */
+
+@media (max-width: 600px) {
+
+    .cadastro-page {
+        min-height: 100vh;
+        overflow-y: auto;
+    }
+
+    .logo {
+        top: 25px;
+        left: 25px;
+
+        font-size: 14px;
+    }
+
+    #img-icon {
+        width: 27px;
+        height: 27px;
+    }
+
+    .cadastro {
+        position: relative;
+
+        left: auto;
+        top: auto;
+
+        width: calc(100% - 50px);
+
+        margin: 150px 25px 0;
+    }
+
+    .cadastro h1 {
+        font-size: 32px;
+        margin-bottom: 40px;
+    }
+
+    .input-group {
+        width: 100%;
+        max-width: 330px;
+
+        margin-bottom: 25px;
+    }
+
+    .input-group input {
+        font-size: 15px;
+    }
+
+    .foto-bttn {
+        position: relative;
+
+        top: auto;
+        right: auto;
+
+        margin-top: 45px;
+    }
+
+    .foto-bttn img {
+        width: 90%;
+        max-width: 380px;
+        height: auto;
+    }
+
+    .foto-bttn button {
+        margin-top: 20px;
+    }
+}
+
+
+/* ================================= */
+/*          CELULAR PEQUENO          */
+/* ================================= */
+
+@media (max-width: 360px) {
+
+    .cadastro {
+        width: calc(100% - 40px);
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .cadastro h1 {
+        font-size: 30px;
+    }
+
+    .foto-bttn img {
+        width: 100%;
+    }
+
+    .foto-bttn button {
+        width: 135px;
+        height: 40px;
+    }
+}

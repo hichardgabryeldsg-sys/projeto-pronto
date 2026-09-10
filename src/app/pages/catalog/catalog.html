@@ -1,0 +1,36 @@
+<header class="header">
+
+  
+
+</header>
+
+
+<main class="catalog">
+
+  <section class="catalog-header">
+
+    <h1>Catálogo</h1>
+
+    <p>
+      Acessórios para deixar seu pet ainda mais feliz.
+    </p>
+
+  </section>
+
+
+  <section class="product-grid">
+
+    @for (produto of produtos; track produto.id) {
+
+      <app-product-card
+        [produto]="produto"
+        (favoritoAlterado)="atualizarFavorito($event)"
+        (adicionar)="adicionarAoCarrinho($event)"
+        (ver)="verProduto($event)"
+      />
+
+    }
+
+  </section>
+
+</main>
