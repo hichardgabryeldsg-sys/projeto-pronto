@@ -27,12 +27,9 @@ export class ProductCard {
   ver = output<Produto>();
 
   favoritar(): void {
-    const produto = this.produto();
-
-    produto.favorito = !produto.favorito;
-
-    this.favoritoAlterado.emit(produto);
-  }
+  const produto = this.produto();
+  this.favoritoAlterado.emit(produto);
+}
 
   adicionarAoCarrinho(): void {
     const produto = this.produto();

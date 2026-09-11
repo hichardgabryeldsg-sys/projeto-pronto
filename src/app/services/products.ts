@@ -40,7 +40,12 @@ const initialProducts: Produto[] = [
 ];
 
 export class ProductsService {
+
   private produtos: Produto[] = initialProducts;
+
+  constructor() {
+    this.carregarFavoritos();
+  }
 
   listar(): Produto[] {
     return this.produtos;
@@ -48,6 +53,51 @@ export class ProductsService {
 
   buscarPorId(id: number): Produto | undefined {
     return this.produtos.find(p => p.id === id);
+  }
+
+  alternarFavorito(id: number): void {
+    const produto = this.produtos.find(p => p.id === id);
+
+    if (!produto) {
+      return;
+    }
+
+    produto.favorito = !produto.favorito;
+
+    this.salvarFavoritos();
+  }
+
+  listarFavoritos(): Produto[] {
+    return this.produtos.filter(produto => produto.favorito);
+  }
+
+  private salvarFavoritos(): void {
+    const favoritos = this.produtos
+      .filter(produto => produto.favorito)
+      .map(produto => produto.id);
+
+    localStorage.setItem(
+      'happyPet.favoritos',
+      JSON.stringify(favoritos)
+    );
+  }
+
+  private carregarFavoritos(): void {
+    const dados = localStorage.getItem('happyPet.favoritos');
+
+    if (!dados) {
+      return;
+    }
+
+    try {
+      const favoritos: number[] = JSON.parse(dados);
+
+      this.produtos.forEach(produto => {
+        produto.favorito = favoritos.includes(produto.id);
+      });
+    } catch {
+      localStorage.removeItem('happyPet.favoritos');
+    }
   }
 }
 

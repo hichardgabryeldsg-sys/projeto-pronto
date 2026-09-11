@@ -1,77 +1,133 @@
 <div class="cadastro-page">
 
-    <!-- Logo -->
-    <div class="logo">
-        <img src="/icon/icon.png" id="img-icon">
-        <span id="name-logo">Happy pet</span>
-    </div>
+  <div class="cadastro-container">
 
-    <!-- Área do cadastro -->
-    <form class="cadastro">
+    <!-- Área esquerda -->
+    <div class="cadastro-form-area">
 
-        <h1>Cadastro</h1>
+      <h1>Cadastro</h1>
+
+      <form
+        [formGroup]="cadastroForm"
+        (ngSubmit)="cadastrar()"
+      >
 
         <!-- Nome -->
         <div class="input-group">
-            <div class="input-icon">
-                👤
-            </div>
 
-            <input
-                type="text"
-                placeholder="Digite seu nome"
-                id="nome">
+          <span class="input-icon">👤</span>
+
+          <input
+            type="text"
+            formControlName="nome"
+            placeholder="Digite seu nome"
+            autocomplete="name"
+          >
+
         </div>
 
-        <!-- Email -->
+        @if (
+          cadastroForm.controls.nome.touched &&
+          cadastroForm.controls.nome.invalid
+        ) {
+          <small class="erro">
+            Digite seu nome.
+          </small>
+        }
+
+
+        <!-- E-mail -->
         <div class="input-group">
-            <div class="input-icon">
-                ✉
-            </div>
 
-            <input
-                type="email"
-                placeholder="Digite seu email"
-                id="email">
+          <span class="input-icon">✉</span>
+
+          <input
+            type="email"
+            formControlName="email"
+            placeholder="Digite seu email"
+            autocomplete="email"
+          >
+
         </div>
+
+        @if (
+          cadastroForm.controls.email.touched &&
+          cadastroForm.controls.email.invalid
+        ) {
+          <small class="erro">
+            Digite um e-mail válido.
+          </small>
+        }
+
 
         <!-- Senha -->
         <div class="input-group">
-            <div class="input-icon">
-                🔒
-            </div>
 
-            <input
-                type="password"
-                placeholder="Digite sua senha"
-                id="senha">
+          <span class="input-icon">🔒</span>
+
+          <input
+            type="password"
+            formControlName="senha"
+            placeholder="Digite sua senha"
+            autocomplete="new-password"
+          >
+
         </div>
+
+        @if (
+          cadastroForm.controls.senha.touched &&
+          cadastroForm.controls.senha.invalid
+        ) {
+          <small class="erro">
+            A senha deve ter pelo menos 6 caracteres.
+          </small>
+        }
+
 
         <!-- Confirmar senha -->
         <div class="input-group">
-            <div class="input-icon">
-                🔒
-            </div>
 
-            <input
-                type="password"
-                placeholder="Confirme sua senha"
-                id="confirmarSenha">
+          <span class="input-icon">🔒</span>
+
+          <input
+            type="password"
+            formControlName="confirmarSenha"
+            placeholder="Confirme sua senha"
+            autocomplete="new-password"
+          >
+
         </div>
 
-    </form>
+        @if (
+          cadastroForm.controls.confirmarSenha.touched &&
+          cadastroForm.controls.confirmarSenha.invalid
+        ) {
+          <small class="erro">
+            Confirme sua senha.
+          </small>
+        }
 
-    <!-- Animais + botão -->
-    <div class="foto-bttn">
 
-        <img
-            src="/img/animal.png"
-            alt="Cachorro e gato">
-
-        <button>
-            CADASTRAR
+        <!-- Botão -->
+        <button type="submit">
+          CADASTRAR
         </button>
 
+      </form>
+
     </div>
+
+
+    <!-- Área direita -->
+    <div class="cadastro-image-area">
+
+      <img
+        src="/img/animal.png"
+        alt="Cachorro e gato"
+      >
+
+    </div>
+
+  </div>
 
 </div>

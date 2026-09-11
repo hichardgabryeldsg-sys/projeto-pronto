@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { cart, CarrinhoItem } from '../../services/cart';
 import { CurrencyPipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -11,7 +12,7 @@ import { CurrencyPipe } from '@angular/common';
 export class CartPage {
   items: CarrinhoItem[] = [];
 
-  constructor() {
+constructor(private router: Router) {
     this.reload();
   }
 
@@ -38,10 +39,40 @@ export class CartPage {
     return cart.subtotal();
   }
 
-  finalizar(): void {
-    console.log('Finalizando compra:', cart.listar());
-    cart.limpar();
-    this.reload();
+finalizar(): void {
+  if (this.items.length === 0) {
+    alert('Seu carrinho está vazio.');
+    return;
   }
 
+  const total = this.subtotal();
+
+  const confirmar = confirm(
+    `Deseja finalizar a compra no valor de R$ ${total.toFixed(2)}?`
+  );
+
+  if (!confirmar) {
+    return;
+  }
+
+  const numeroPedido = Math.floor(
+    100000 + Math.random() * 900000
+  );
+
+  console.log('Pedido finalizado:', {
+    numero: numeroPedido,
+    itens: cart.listar(),
+    total: total
+  });
+
+  localStorage.setItem(
+    'ultimoPedido',
+    numeroPedido.toString()
+  );
+
+  cart.limpar();
+  this.reload();
+
+  this.router.navigate(['/pedido-confirmado']);
+}
 }

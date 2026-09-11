@@ -17,6 +17,7 @@ export class ProductDetail {
   constructor(private route: ActivatedRoute, private router: Router) {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     const p = productsService.buscarPorId(id);
+
     if (!p) {
       // se não existe, volta para catálogo
       this.router.navigate(['/']);
@@ -27,7 +28,8 @@ export class ProductDetail {
 
   comprar(): void {
     if (!this.produto) return;
-    cart.adicionar(this.produto, 1);
+  cart.adicionar(this.produto, 1);
+  this.router.navigate(['/cart']);
   }
 
 }

@@ -15,9 +15,10 @@ export class Catalog {
 
   constructor(private router: Router) {}
 
-  atualizarFavorito(produto: Produto): void {
-    console.log('Favorito alterado:', produto);
-  }
+ atualizarFavorito(produto: Produto): void {
+  productsService.alternarFavorito(produto.id);
+  this.produtos = productsService.listar();
+}
 
   adicionarAoCarrinho(produto: Produto): void {
     cart.adicionar(produto, 1);
