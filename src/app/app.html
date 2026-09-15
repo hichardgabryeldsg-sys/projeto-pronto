@@ -4,8 +4,14 @@
 
 	<nav>
 		<a routerLink="/">Home</a>
-		<a routerLink="/login">Login</a>
-		<a routerLink="/cadastro">Sign in</a>
+		@if (!logado){
+			<a routerLink="/login">Login</a>
+			<a routerLink="/cadastro">Sign in</a>
+		}
+		
+		@if (logado) {
+			<button (click)="sair()">Sair</button>
+		}
 	</nav>
 
 	<nav class="header-actions">

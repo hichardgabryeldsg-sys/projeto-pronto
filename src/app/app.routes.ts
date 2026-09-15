@@ -6,6 +6,7 @@ import { Cadastro } from './cadastro/cadastro';
 import { CartPage } from './pages/cart/cart';
 import { Favoritos } from './pages/favoritos/favoritos';
 import { PedidoConfirmado } from './pages/pedido-confirmado/pedido-confirmado';
+import { RecuperarSenha } from "./recuperar-senha/recuperar-senha";
 
 export const routes: Routes = [
   {
@@ -32,6 +33,10 @@ export const routes: Routes = [
     path: 'cadastro',
     component: Cadastro
   },
+  {
+  path: "recuperar-senha",
+  component: RecuperarSenha
+},
   {
     path: 'product/:id',
     component: ProductDetail
