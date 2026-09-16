@@ -1,28 +1,68 @@
 <header class="app-header">
 
-	<div class="logo">Happy Pet</div>
+	<div class="logo">
+		🐾 Happy Pet
+	</div>
 
-	<nav>
-		<a routerLink="/">Home</a>
-		@if (!logado){
-			<a routerLink="/login">Login</a>
-			<a routerLink="/cadastro">Sign in</a>
+	<nav class="main-nav">
+
+		<a routerLink="/">
+			Home
+		</a>
+
+		@if (!logado) {
+
+		<a routerLink="/login">
+			Login
+		</a>
+
+		<a routerLink="/cadastro">
+			Sign in
+		</a>
+
 		}
-		
+
 		@if (logado) {
-			<button (click)="sair()">Sair</button>
+
+		<button type="button" class="logout-button" (click)="sair()">
+			<span>↪</span>
+			Sair
+		</button>
+
 		}
+
 	</nav>
 
 	<nav class="header-actions">
+
 		<a routerLink="/cart" class="cart-link" aria-label="Ver carrinho">
-			carrinho
+			🛒 Carrinho
 		</a>
-		<a routerLink="/favoritos">
+
+		<a routerLink="/favoritos" class="favorite-link">
 			❤️ Favoritos
 		</a>
+
 	</nav>
 
 </header>
+
+
+@if (mensagem()) {
+
+<div class="notificacao">
+
+	<span class="notificacao-icone">
+		🐾
+	</span>
+
+	<span>
+		{{ mensagem() }}
+	</span>
+
+</div>
+
+}
+
 
 <router-outlet />

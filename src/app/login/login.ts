@@ -1,63 +1,82 @@
-import { RouterLink } from "@angular/router";
 import { Component } from '@angular/core';
-import {
-  FormBuilder,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { Router } from '@angular/router';
 
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
+
   imports: [ReactiveFormsModule, RouterLink],
+
   templateUrl: './login.html',
-  styleUrl: './login.css'
+
+  styleUrl: './login.css',
 })
 export class Login {
-
   loginForm;
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+
+    private router: Router,
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      senha: ['', Validators.required]
+
+      senha: ['', [Validators.required]],
     });
   }
 
   entrar(): void {
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
+
+      window.dispatchEvent(
+        new CustomEvent('notificacao', {
+          detail: 'Preencha seu e-mail e sua senha.',
+        }),
+      );
+
       return;
     }
+
+    const dados = this.loginForm.value;
 
     const usuarioSalvo = localStorage.getItem('usuario');
 
     if (!usuarioSalvo) {
-      alert('Nenhum usuário cadastrado.');
+      window.dispatchEvent(
+        new CustomEvent('notificacao', {
+          detail: 'Nenhum usuário cadastrado. Faça seu cadastro primeiro.',
+        }),
+      );
+
       return;
     }
 
     const usuario = JSON.parse(usuarioSalvo);
-    const dados = this.loginForm.value;
 
-    if (
-      dados.email === usuario.email &&
-      dados.senha === usuario.senha
-    ) {
-      localStorage.setItem('logado', 'true');
+    if (dados.email !== usuario.email || dados.senha !== usuario.senha) {
+      window.dispatchEvent(
+        new CustomEvent('notificacao', {
+          detail: 'E-mail ou senha incorretos.',
+        }),
+      );
 
-      window.dispatchEvent(new Event('storage'));
-
-      alert('Login realizado com sucesso!');
-
-      this.router.navigate(['/']);
-    } else {
-      alert('E-mail ou senha incorretos.');
+      return;
     }
+
+    localStorage.setItem('logado', 'true');
+
+    window.dispatchEvent(new Event('loginAlterado'));
+
+    window.dispatchEvent(
+      new CustomEvent('notificacao', {
+        detail: 'Login realizado com sucesso! 🐾',
+      }),
+    );
+
+    this.router.navigate(['/']);
   }
 }
